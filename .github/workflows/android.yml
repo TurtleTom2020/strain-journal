@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Unpack project
-        run: unzip -q -o MedLeafJournal-source.zip
+        run: unzip -q -o Terpfolio-source.zip
 
       - uses: actions/setup-java@v4
         with:
