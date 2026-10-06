@@ -5,6 +5,10 @@ on:
   push:
     branches: [ main ]
 
+concurrency:
+  group: terpfolio-android-build
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -38,6 +42,9 @@ jobs:
             exit 1
           fi
 
+      - name: Apply reviewed UK catalogue expansion
+        run: python3 catalogue-tools/apply_catalogue_overlay.py "$TERPFOLIO_PROJECT_DIR"
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -57,3 +64,22 @@ jobs:
           name: Terpfolio-debug
           path: ${{ env.TERPFOLIO_PROJECT_DIR }}/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+
+      - name: Preserve unit test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Terpfolio-test-results
+          path: ${{ env.TERPFOLIO_PROJECT_DIR }}/app/build/test-results/testDebugUnitTest/*.xml
+          if-no-files-found: warn
+
+      - name: Package expanded source
+        shell: bash
+        run: |
+          cd "$TERPFOLIO_PROJECT_DIR"
+          zip -q -r "$GITHUB_WORKSPACE/Terpfolio-source-v0.55.0.zip" . -x '*/build/*' '.gradle/*'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Terpfolio-v0.55.0-source
+          path: Terpfolio-source-v0.55.0.zip
