@@ -5,7 +5,7 @@ def get(url):
  with urllib.request.urlopen(req,timeout=35) as r:return r.read(),dict(r.headers)
 products=[]
 try:
- url=BASE+'at_biz_dir?per_page=100&search=Medicinal%20Cannabis%20Flower&_fields=id,title,content,link,featured_media,meta'
+ url=BASE+'at_biz_dir?per_page=100&search=Flower&_fields=id,title,content,link,featured_media,meta'
  b,h=get(url);products+=json.loads(b);pages=min(30,int(h.get('X-WP-TotalPages',h.get('x-wp-totalpages',1))))
  for page in range(2,pages+1):
   b,_=get(url+'&page='+str(page));products+=json.loads(b)
