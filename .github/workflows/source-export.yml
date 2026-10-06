@@ -32,6 +32,8 @@ jobs:
               except Exception as e:
                   print(name,type(e).__name__,str(e))
           PY
+      - name: Collect directory product and company records
+        run: python3 catalogue-tools/collect_directory.py
       - uses: actions/upload-artifact@v4
         with:
           name: Terpfolio-current-source
