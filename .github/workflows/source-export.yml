@@ -22,7 +22,7 @@ jobs:
         run: |
           python3 - <<'PY'
           import urllib.request, pathlib
-          pages = {'ukflwr-flower':'https://ukflwr.com/medical-cannabis-uk.php?prod_cat=flower', 'ukflwr-brands':'https://ukflwr.com/medical-cannabis-brands.php', 'medibud':'https://medibud.app/', 'medbud':'https://medbud.wiki/strains/', 'medibud-js':'https://medibud.app/assets/index-rIupZGiN.js', 'directory':'https://thereasonableadjustment.co.uk/medical-cannabis/strains/', 'medibud-data':'https://medibud.app/api/strains', 'encycloseedia':'https://encycloseedia.co.uk/strains', 'cannacheck':'https://cannacheck.co.uk/producers/', 'leafme':'https://leafme.co.uk/manufacturers', 'tcp-media':'https://thecannabispages.com/wp-json/wp/v2/media?search=logo&per_page=100'}
+          pages = {'ukflwr-flower':'https://ukflwr.com/medical-cannabis-uk.php?prod_cat=flower', 'ukflwr-brands':'https://ukflwr.com/medical-cannabis-brands.php', 'medibud':'https://medibud.app/', 'medbud':'https://medbud.wiki/strains/', 'medibud-js':'https://medibud.app/assets/index-rIupZGiN.js', 'directory':'https://thereasonableadjustment.co.uk/medical-cannabis/strains/', 'medibud-data':'https://medibud.app/api/strains', 'encycloseedia':'https://encycloseedia.co.uk/strains', 'cannacheck':'https://cannacheck.co.uk/producers/', 'leafme':'https://leafme.co.uk/manufacturers', 'tcp-media':'https://thecannabispages.com/wp-json/wp/v2/media?search=logo&per_page=100', 'tcp-media2':'https://thecannabispages.com/wp-json/wp/v2/media?search=logo&per_page=100&page=2', 'tcp-media3':'https://thecannabispages.com/wp-json/wp/v2/media?search=logo&per_page=100&page=3', 'tcp-types':'https://thecannabispages.com/wp-json/wp/v2/types'}
           for name,url in pages.items():
               try:
                   req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'})
@@ -32,8 +32,6 @@ jobs:
               except Exception as e:
                   print(name,type(e).__name__,str(e))
           PY
-      - name: Collect official logo candidates
-        run: python3 catalogue-tools/collect_logos.py
       - uses: actions/upload-artifact@v4
         with:
           name: Terpfolio-current-source
