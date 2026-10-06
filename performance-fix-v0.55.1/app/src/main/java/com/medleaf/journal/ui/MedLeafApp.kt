@@ -640,16 +640,16 @@ private fun MedLeafAppContent(appTheme: AppTheme, onThemeChange: (AppTheme) -> U
     }
     val effectiveCultivator = if (brandIsCultivator) brand else cultivator
     val exactCatalogueMatch by produceState<CatalogueProduct?>(null, catalogue, name, brand, effectiveCultivator, selectedCatalogueId) {
-        value = withContext(Dispatchers.Default) {
+        this.value = withContext(Dispatchers.Default) {
             catalogue.firstOrNull { it.id == selectedCatalogueId }
                 ?: CatalogueSearch.exact(catalogue, name, brand, effectiveCultivator)
         }
     }
     val localSuggestions by produceState<List<CatalogueProduct>>(emptyList(), catalogue, name) {
-        value = withContext(Dispatchers.Default) { CatalogueSearch.search(catalogue, name) }
+        this.value = withContext(Dispatchers.Default) { CatalogueSearch.search(catalogue, name) }
     }
     val onlineSuggestions by produceState<List<CatalogueProduct>>(emptyList(), onlineResults, name) {
-        value = withContext(Dispatchers.Default) { CatalogueSearch.search(onlineResults, name) }
+        this.value = withContext(Dispatchers.Default) { CatalogueSearch.search(onlineResults, name) }
     }
     // A partial query has no exact match. Do not compare null == null here: that previously
     // suppressed every autocomplete result until a complete catalogue name was entered.
