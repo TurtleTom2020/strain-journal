@@ -45,6 +45,9 @@ jobs:
       - name: Apply reviewed UK catalogue expansion
         run: python3 catalogue-tools/apply_catalogue_overlay.py "$TERPFOLIO_PROJECT_DIR"
 
+      - name: Apply review editor performance fix
+        run: python3 catalogue-tools/apply_performance_fix.py "$TERPFOLIO_PROJECT_DIR"
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -80,12 +83,12 @@ jobs:
         shell: bash
         run: |
           cd "$TERPFOLIO_PROJECT_DIR"
-          zip -q -r "$GITHUB_WORKSPACE/Terpfolio-source-v0.55.0.zip" . -x '*/build/*' '.gradle/*'
+          zip -q -r "$GITHUB_WORKSPACE/Terpfolio-source-v0.55.1.zip" . -x '*/build/*' '.gradle/*'
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Terpfolio-v0.55.0-source
-          path: Terpfolio-source-v0.55.0.zip
+          name: Terpfolio-v0.55.1-source
+          path: Terpfolio-source-v0.55.1.zip
 
       - uses: actions/upload-artifact@v4
         with:
