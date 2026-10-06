@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['.github/workflows/source-export.yml']
+    paths: ['.github/workflows/source-export.yml', 'catalogue-tools/collect_directory.py']
 permissions:
   contents: read
 jobs:
