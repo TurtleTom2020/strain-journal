@@ -21,6 +21,7 @@ data class LogoArtworkBounds(val left: Int, val top: Int, val right: Int, val bo
 /** Single source of truth for bundled cultivator identities and their offline logos. */
 object CultivatorBrands {
     val all = listOf(
+        CultivatorBrand("Thunderchild", R.drawable.cultivator_thunderchild, setOf("Thunderchild Cultivation"), LogoArtworkBounds(0, 0, 3095, 483), monochrome = true),
         CultivatorBrand("Weeco", R.drawable.company_weeco, artworkBounds = LogoArtworkBounds(60, 48, 539, 171), monochrome = true),
         CultivatorBrand("Avextra", R.drawable.company_avextra, artworkBounds = LogoArtworkBounds(213, 90, 387, 130), monochrome = true),
         CultivatorBrand("Clearleaf", R.drawable.company_clearleaf, artworkBounds = LogoArtworkBounds(241, 68, 359, 152), monochrome = true),

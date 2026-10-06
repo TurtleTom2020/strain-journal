@@ -83,12 +83,12 @@ jobs:
         shell: bash
         run: |
           cd "$TERPFOLIO_PROJECT_DIR"
-          zip -q -r "$GITHUB_WORKSPACE/Terpfolio-source-v0.55.1.zip" . -x '*/build/*' '.gradle/*'
+          zip -q -r "$GITHUB_WORKSPACE/Terpfolio-source-v0.55.2.zip" . -x '*/build/*' '.gradle/*'
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Terpfolio-v0.55.1-source
-          path: Terpfolio-source-v0.55.1.zip
+          name: Terpfolio-v0.55.2-source
+          path: Terpfolio-source-v0.55.2.zip
 
       - uses: actions/upload-artifact@v4
         with:
