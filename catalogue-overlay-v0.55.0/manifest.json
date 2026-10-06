@@ -1,7 +1,7 @@
 {
   "version": "0.55.0",
   "baseSource": "Terpfolio-source-v0.54.3-georgia-pie.zip",
-  "sha256": "89166978377b16625a0c2e2774c11e2d7e3ace36ea0411f519d6f2f1d2f22607",
+  "sha256": "ab58fc118b3f87054261133e933d7117208b78b21e47f45d18a6104861d66de6",
   "parts": [
     "part-000.b64",
     "part-001.b64",
