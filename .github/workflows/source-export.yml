@@ -32,6 +32,8 @@ jobs:
               except Exception as e:
                   print(name,type(e).__name__,str(e))
           PY
+      - name: Collect official logo candidates
+        run: python3 catalogue-tools/collect_logos.py
       - uses: actions/upload-artifact@v4
         with:
           name: Terpfolio-current-source
